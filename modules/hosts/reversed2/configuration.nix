@@ -12,20 +12,16 @@
         self.nixosModules.reversed2Hardware
         self.nixosModules.experimentalFeatures
         self.nixosModules.git
+        self.nixosModules.age
       ];
+
+      # from /etc/ssh/ssh_host_ed25519_key.pub
+      age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5SUtLQfW/1IE6TO9nkekxaHYM3D72qWjMVPJMIS5Yv root@nixos";
 
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      networking.hostName = "reversed2"; # Define your hostname.
-      # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-      # Configure network proxy if necessary
-      # networking.proxy.default = "http://user:password@proxy:port/";
-      # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-      # Enable networking
-      # networking.networkmanager.enable = true;
+      networking.hostName = "reversed2";
 
       networking = {
         interfaces.ens18.ipv4.addresses = [
@@ -42,12 +38,8 @@
         };
       };
 
-      # Set your time zone.
       time.timeZone = "Europe/Berlin";
-
-      # Select internationalisation properties.
       i18n.defaultLocale = "en_US.UTF-8";
-
       i18n.extraLocaleSettings = {
         LC_ADDRESS = "de_DE.UTF-8";
         LC_IDENTIFICATION = "de_DE.UTF-8";

@@ -20,8 +20,6 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake {
-      inputs = inputs // {
-        rootPath = ./.;
-      };
+      inputs = inputs;
     } (inputs.import-tree ./modules);
 }

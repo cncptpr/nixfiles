@@ -2,10 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, ... }:
+{
+  self,
+  ...
+}:
+let
+  host = "reversed2";
+  number_wg_clients = 3;
+in
 {
   flake.nixosModules.reversed2Configuration =
-    { pkgs, lib, ... }:
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     {
 
       imports = [
@@ -21,7 +33,11 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      networking.hostName = "reversed2";
+      boot.kernel.sysctl = {
+        "net.ipv4.ip_forward" = 1;
+      };
+
+      networking.hostName = host;
 
       networking = {
         interfaces.ens18.ipv4.addresses = [
@@ -60,7 +76,17 @@
 
       # Configure console keymap
       console.keyMap = "de";
-      programs.fish.enable = true;
+      programs.fish = {
+        enable = true;
+        shellAliases = {
+          gs = "git status";
+          ga = "git add -A";
+          gc = "git commit";
+          gp = "git push";
+          gd = "git diff";
+          adog = "git log --all --decorate --oneline --graph";
+        };
+      };
       services.openssh.enable = true;
 
       # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -85,12 +111,25 @@
         TERM = "xterm-256color";
       };
 
+      age.secrets = {
+        "wg-${host}-server".rekeyFile = ../../../secrets/wg-${host}-server.age;
+      }
+      // lib.mergeAttrsList (
+        map (i: {
+          "wg-${host}-client-${toString i}".rekeyFile = ../../../secrets/wg-${host}-client-${toString i}.age;
+        }) (lib.range 1 number_wg_clients)
+      );
+
+      # networking.wg-quick.interfaces.wg0.configFile = config.age.secrets."wg-${host}-server".file;
+      networking.wg-quick.interfaces.wg0.configFile = config.age.secrets."wg-${host}-server".path;
+
       # List packages installed in system profile. To search, run:
       # $ nix search wget
-      # environment.systemPackages = with pkgs; [
-      #   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      #   #  wget
-      # ];
+      environment.systemPackages = with pkgs; [
+        #   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        #   #  wget
+        iptables # Required by wireguard
+      ];
 
       # Some programs need SUID wrappers, can be configured further or are
       # started in user sessions.

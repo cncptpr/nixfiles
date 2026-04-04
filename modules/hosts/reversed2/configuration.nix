@@ -20,11 +20,12 @@ in
     }:
     {
 
-      imports = [
-        self.nixosModules.reversed2Hardware
-        self.nixosModules.experimentalFeatures
-        self.nixosModules.git
-        self.nixosModules.age
+      imports = with self.nixosModules; [
+        reversed2Hardware
+        experimentalFeatures
+        git
+        fish
+        age
       ];
 
       # from /etc/ssh/ssh_host_ed25519_key.pub
@@ -33,6 +34,11 @@ in
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
+      # == Networking == 
+
+      # IP Forwarding.
+      # Required to allow wireguard clients to access the internet.
+      # Standard wg-quick iptable setup is also needed.
       boot.kernel.sysctl = {
         "net.ipv4.ip_forward" = 1;
       };
@@ -76,17 +82,6 @@ in
 
       # Configure console keymap
       console.keyMap = "de";
-      programs.fish = {
-        enable = true;
-        shellAliases = {
-          gs = "git status";
-          ga = "git add -A";
-          gc = "git commit";
-          gp = "git push";
-          gd = "git diff";
-          adog = "git log --all --decorate --oneline --graph";
-        };
-      };
       services.openssh.enable = true;
 
       # Define a user account. Don't forget to set a password with ‘passwd’.

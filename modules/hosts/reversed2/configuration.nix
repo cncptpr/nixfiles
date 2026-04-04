@@ -11,6 +11,14 @@ let
   number_wg_clients = 3;
 in
 {
+  flake.custom = {
+    staticNetworking = {
+      address = "185.119.16.106";
+      prefixLength = 32;
+      gateway = "37.114.36.0";
+    };
+  };
+
   flake.nixosModules.reversed2Configuration =
     {
       pkgs,
@@ -23,6 +31,7 @@ in
       imports = with self.nixosModules; [
         reversed2Hardware
         experimentalFeatures
+        staticNetworking
         git
         fish
         age
@@ -34,7 +43,7 @@ in
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      # == Networking == 
+      # == Networking ==
 
       # IP Forwarding.
       # Required to allow wireguard clients to access the internet.
@@ -45,20 +54,20 @@ in
 
       networking.hostName = host;
 
-      networking = {
-        interfaces.ens18.ipv4.addresses = [
-          {
-            address = "185.119.16.106";
-            prefixLength = 32;
-          }
-        ];
-        nameservers = [ "1.1.1.1" ];
-        firewall.enable = false;
-        defaultGateway = {
-          address = "37.114.36.0";
-          interface = "ens18";
-        };
-      };
+      # networking = {
+      #   interfaces.ens18.ipv4.addresses = [
+      #     {
+      #       address = "185.119.16.106";
+      #       prefixLength = 32;
+      #     }
+      #   ];
+      #   nameservers = [ "1.1.1.1" ];
+      #   firewall.enable = false;
+      #   defaultGateway = {
+      #     address = "37.114.36.0";
+      #     interface = "ens18";
+      #   };
+      # };
 
       time.timeZone = "Europe/Berlin";
       i18n.defaultLocale = "en_US.UTF-8";

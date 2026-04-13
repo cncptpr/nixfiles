@@ -7,20 +7,45 @@
 {
   flake.nixosModules.rustdeskServer =
     { config, ... }:
+    let
+      localAddress = "192.168.100.2";
+      ports = [
+        { port = 21115; }
+        { port = 21116; }
+        {
+          port = 21117;
+          proto = "udp";
+        }
+        { port = 21118; }
+        { port = 21119; }
+      ];
+      filterPorts =
+        proto': ports:
+        ports
+        |> builtins.filter (
+          {
+            proto ? "tcp",...
+          }:
+          proto == proto'
+        )
+        |> builtins.map ({ port, ... }: port);
+      tcpPorts = filterPorts "tcp" ports;
+      udpPorts = filterPorts "udp" ports;
+    in
     {
       containers.rustdesk = {
         autoStart = true;
         privateNetwork = true;
         hostAddress = "192.168.100.1";
-        localAddress = "192.168.100.2";
+        localAddress = localAddress;
 
         config =
           { pkgs, ... }:
           {
             networking.firewall = {
               enable = true;
-              allowedTCPPorts = [ 21115 21116 21118 21119 ];
-              allowedUDPPorts = [ 21117 ];
+              allowedTCPPorts = tcpPorts;
+              allowedUDPPorts = udpPorts;
             };
 
             networking.useHostResolvConf = lib.mkForce false;
@@ -60,13 +85,25 @@
 
         internalInterfaces = [ "ve-+" ];
         externalInterface = "ens18";
+
+        forwardPorts =
+          let
+            forward = (
+              {
+                port,
+                proto ? "tcp",
+              }:
+              {
+                sourcePort = port;
+                proto = proto;
+                destination = "${localAddress}:${toString port}";
+              }
+            );
+          in
+          map forward ports;
       };
-      networking.firewall.allowedTCPPorts = [
-        21115
-        21116
-        21118
-        21119
-      ];
-      networking.firewall.allowedUDPPorts = [ 21117 ];
+
+      networking.firewall.allowedTCPPorts = tcpPorts;
+      networking.firewall.allowedUDPPorts = udpPorts;
     };
 }

@@ -16,6 +16,7 @@ in
       address = "185.119.16.106";
       prefixLength = 32;
       gateway = "37.114.36.0";
+      interface = "ens18";
     };
   };
 

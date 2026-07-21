@@ -24,6 +24,11 @@
             identity = "/home/cncptpr/.ssh/id_ed25519";
             pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN6ZCBDzuX8ZpvCKjTLCKjaYy3H3BGkVqFiwLt+wZrQD reversed2";
           }
+          {
+            # Host: h0t2
+            identity = "/home/cncptpr/.ssh/id_ed25519";
+            pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEnYWVgKbHfCAj+f/pN3cWPdYUZwWv+t70jBkNTQfnMw h0t2";
+          }
         ];
         storageMode = "local";
         # Choose a directory to store the rekeyed secrets for this host.

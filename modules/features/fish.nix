@@ -28,7 +28,8 @@
           gp = "git push";
           gd = "git diff";
           adog = "git log --all --decorate --oneline --graph";
-        } // lib.mkIf config.virtualisation.docker.enable {
+        }
+        // lib.mkIf config.virtualisation.docker.enable {
           du = "docker compose up -d";
           dua = "docker compose up";
           dd = "docker compose down";

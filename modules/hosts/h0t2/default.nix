@@ -8,4 +8,3 @@
     modules = [ self.nixosModules.h0t2Configuration ];
   };
 }
-

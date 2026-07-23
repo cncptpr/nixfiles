@@ -85,7 +85,6 @@ in
         shell = pkgs.fish;
         packages = with pkgs; [
           helix
-          tmux
           yazi
           nil
           nix-output-monitor
@@ -105,6 +104,7 @@ in
       # Onedrive Backup Upload
 
       environment.systemPackages = with pkgs; [
+        self.packages.${stdenv.hostPlatform.system}.tmux
         rclone # required by backup-upload-ondrive service
       ];
 

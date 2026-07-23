@@ -109,6 +109,7 @@ in
 
           # Dev
           helix
+          gh
           git
           lazygit
 

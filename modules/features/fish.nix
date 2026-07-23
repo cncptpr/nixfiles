@@ -21,21 +21,23 @@
             end
         end
         ";
-        shellAliases = {
-          gs = "git status";
-          ga = "git add -A";
-          gc = "git commit";
-          gp = "git push";
-          gd = "git diff";
-          adog = "git log --all --decorate --oneline --graph";
-        }
-        // lib.mkIf config.virtualisation.docker.enable {
-          du = "docker compose up -d";
-          dua = "docker compose up";
-          dd = "docker compose down";
-          dr = "dd && du";
-          dy = "docker compose pull && dr";
-        };
+        shellAliases = lib.mkMerge [
+          {
+            gs = "git status";
+            ga = "git add -A";
+            gc = "git commit";
+            gp = "git push";
+            gd = "git diff";
+            adog = "git log --all --decorate --oneline --graph";
+          }
+          (lib.mkIf config.virtualisation.docker.enable {
+            du = "docker compose up -d";
+            dua = "docker compose up";
+            dd = "docker compose down";
+            dr = "dd && du";
+            dy = "docker compose pull && dr";
+          })
+        ];
       };
     };
 }

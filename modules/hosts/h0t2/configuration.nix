@@ -83,14 +83,6 @@ in
           "docker"
         ];
         shell = pkgs.fish;
-        packages = with pkgs; [
-          helix
-          yazi
-          nil
-          nix-output-monitor
-          git
-          curl
-        ];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORD/6qz7wZxaZZwF37bNQad4KZYVEzeeCOsorCRfpNs"
         ];
@@ -101,13 +93,39 @@ in
         TERM = "xterm-256color";
       };
 
+      programs.nh = {
+        enable = true;
+        clean.enable = true;
+        clean.extraArgs = "--keep-since 4d --keep 3";
+        flake = "/home/cncptpr/nixfiles"; # sets NH_OS_FLAKE variable for you
+      };
+
+      environment.systemPackages =
+        with pkgs;
+        [
+          rclone # required by backup-upload-ondrive service
+
+          self.packages.${stdenv.hostPlatform.system}.tmux
+
+          # Dev
+          helix
+          git
+          lazygit
+
+          # Nix Stuff
+          nil
+
+          # Other
+          file
+          yazi
+          curl
+        ]
+        ++ (with self.packages.${stdenv.hostPlatform.system}; [
+          # Wrapped Packages
+          tmux
+        ]);
+
       # Onedrive Backup Upload
-
-      environment.systemPackages = with pkgs; [
-        self.packages.${stdenv.hostPlatform.system}.tmux
-        rclone # required by backup-upload-ondrive service
-      ];
-
       systemd.timers."backup-upload-onedrive" = {
         description = "Run upload.fish once a day";
         after = [ "network-online.target" ];

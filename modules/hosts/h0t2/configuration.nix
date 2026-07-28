@@ -103,8 +103,6 @@ in
       environment.systemPackages =
         with pkgs;
         [
-          # rclone # required by backup-upload-ondrive service
-
           # Dev
           helix
           gh

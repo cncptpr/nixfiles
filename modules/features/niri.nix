@@ -26,7 +26,7 @@
         # partOf = "graphical-session.target";
 
         serviceConfig = {
-          Environment = "PATH=%h/.nix-profile/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin";
+          Environment = "PATH=/run/wrappers/bin:%h/.nix-profile/bin:/nix/profile/bin:%h/.local/state/nix/profile/bin:/etc/profiles/per-user/cncptpr/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin";
           Type = "simple";
           ExecStart = "${lib.getExe pkgs-stable.vicinae} server";
           Restart = "on-failure";

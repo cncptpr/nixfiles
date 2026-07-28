@@ -11,11 +11,13 @@ in
     { config, pkgs, ... }:
     {
       imports = with self.nixosModules; [
+        inputs.home-manager.nixosModules.default
         l4pt2Hardware
         experimentalFeatures
         git
         fish
         niri
+        # zenBrowser
         # age
       ];
 
@@ -43,7 +45,6 @@ in
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
 
-      
       services.printing.enable = true;
       services.pulseaudio.enable = false;
       security.rtkit.enable = true;
@@ -52,6 +53,19 @@ in
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
+      };
+
+      programs.dconf.profiles.user.databases = [{
+        settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+      }];
+
+      home-manager = {
+        users."cncptpr" = { ... }: {
+          imports = [
+            self.homeModules.zenBrowser
+          ];
+          home.stateVersion = config.system.stateVersion;
+        };
       };
 
       users.users."cncptpr" = {

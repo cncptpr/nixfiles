@@ -103,9 +103,7 @@ in
       environment.systemPackages =
         with pkgs;
         [
-          rclone # required by backup-upload-ondrive service
-
-          self.packages.${stdenv.hostPlatform.system}.tmux
+          # rclone # required by backup-upload-ondrive service
 
           # Dev
           helix
@@ -128,7 +126,7 @@ in
 
       # Onedrive Backup Upload
       systemd.timers."backup-upload-onedrive" = {
-        description = "Run upload.fish once a day";
+        description = "Run backup upload once a day";
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
         timerConfig = {
@@ -141,14 +139,14 @@ in
       };
 
       systemd.services."backup-upload-onedrive" = {
-        description = "Run upload.fish script once";
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = "${pkgs.fish}/bin/fish /mass/config/homelab/backrest/upload-timer/upload.fish";
-          User = "root";
-          Group = "root";
-          Nice = 10;
-        };
+        description = "Run backup upload once";
+        script = ''
+          CONFIG_PATH=/mass/config/homelab/backrest/rclone/rclone.conf
+          LOCAL_PATH=/mass/backups/backrest/h0T2-data-config/
+          REMOTE_PATH=onedrive:homelab/backups/backrest/h0T2-data-config/
+
+          ${pkgs.rclone}/bin/rclone --config "$CONFIG_PATH" sync "$LOCAL_PATH" "$REMOTE_PATH" -vv
+        '';
       };
 
       # Configure network proxy if necessary

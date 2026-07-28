@@ -11,14 +11,8 @@ let
   number_wg_clients = 3;
 in
 {
-  flake.custom = {
-    staticNetworking = {
-      address = "185.119.16.106";
-      prefixLength = 32;
-      gateway = "37.114.36.0";
-      interface = "ens18";
-    };
-  };
+  # flake.
+  # };
 
   flake.nixosModules.reversed2Configuration =
     {
@@ -37,6 +31,13 @@ in
         fish
         age
       ];
+
+      staticNetworking = {
+        address = "185.119.16.106";
+        prefixLength = 32;
+        gateway = "37.114.36.0";
+        interface = "ens18";
+      };
 
       # from /etc/ssh/ssh_host_ed25519_key.pub
       age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5SUtLQfW/1IE6TO9nkekxaHYM3D72qWjMVPJMIS5Yv root@nixos";

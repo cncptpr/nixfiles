@@ -1,26 +1,58 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.fish =
-    { config, lib, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
     {
       programs.fish = {
         enable = true;
-        shellInit = "
+        shellInit = ''
           function tmux-go
-            set -l target (realpath $argv[1])
-            set -l sess (basename $target)
+              set -l target (realpath $argv[1])
+              set -l sess (basename $target)
 
-            if set -q TMUX
-                tmux switch-client -t $sess
-                if test $status -ne 0
-                    tmux new-session -d -s $sess -c $target
-                    tmux switch-client -t $sess
-                end
-            else
-                tmux new-session -A -s $sess -c $target
-            end
-        end
-        ";
+              if set -q TMUX
+                  tmux switch-client -t $sess
+                  if test $status -ne 0
+                      tmux new-session -d -s $sess -c $target
+                      tmux switch-client -t $sess
+                  end
+              else
+                  tmux new-session -A -s $sess -c $target
+              end
+          end
+
+          function fish_greeting
+              ${pkgs.fastfetch}/bin/fastfetch
+          end
+
+          function yazi_picker
+              set tmp_cwd (mktemp -t "yazi-cwd.XXXXXX")
+              set tmp_chooser (mktemp -t "yazi-chooser.XXXXXX")
+              command ${pkgs.yazi}/bin/yazi $argv --chooser-file="$tmp_chooser" --cwd-file="$tmp_cwd"
+              if read -z chosen <"$tmp_chooser"; and test -d "$chosen"
+                  printf "%s" "$chosen"
+              else if read -z cwd <"$tmp_cwd"; and test -d "$cwd"
+                  printf "%s" "$cwd"
+              end
+              command rm -f -- "$tmp_cwd" "$tmp_chooser"
+          end
+
+          function y
+              set picked $(yazi_picker)
+              if [ "$picked" != "$PWD" ];
+                  builtin cd -- "$picked"
+              end
+          end
+
+          function ty
+              tmux-go $(yazi_picker)
+          end
+        '';
         shellAliases = lib.mkMerge [
           {
             gs = "git status";

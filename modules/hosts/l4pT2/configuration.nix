@@ -107,6 +107,7 @@ in
 
           # Nix Stuff
           nil
+          deploy-rs
 
           # Other
           file

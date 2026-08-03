@@ -27,7 +27,6 @@
           end
 
           function fish_greeting
-              ${pkgs.fastfetch}/bin/fastfetch
           end
 
           function yazi_picker

@@ -229,6 +229,7 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
+          "zen-browser",
           "nixpkgs"
         ]
       },
@@ -353,7 +354,6 @@
         "agenix-rekey": "agenix-rekey",
         "deploy-rs": "deploy-rs",
         "flake-parts": "flake-parts_2",
-        "home-manager": "home-manager_2",
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
@@ -471,9 +471,7 @@
     },
     "zen-browser": {
       "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
+        "home-manager": "home-manager_2",
         "nixpkgs": [
           "nixpkgs"
         ]

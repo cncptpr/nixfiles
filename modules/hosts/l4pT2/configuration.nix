@@ -18,6 +18,7 @@ in
         niri
         zenBrowser
         age
+        nmProfiles
       ];
 
       boot = {

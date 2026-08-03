@@ -42,7 +42,7 @@ in
       # from /etc/ssh/ssh_host_ed25519_key.pub
       age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJB0m5CGrE6RBEMpQLmM1gR0BhRAtxSxRn9WfjNCu90N root@h0t2";
       # age.secrets."ssh-authorized-keys".rekeyFile = ../../../secrets/ssh-authorized-keys.age; # OpenSSH config doesn't allow for making that a secret...
-      age.secrets."tailscale-auth-key".rekeyFile = ../../../secrets/tailscale-auth-key.age; # OpenSSH config doesn't allow for making that a secret...
+      age.secrets."tailscale-auth-key".rekeyFile = ../../../secrets/tailscale-auth-key.age;
 
       # TODO: extract into shared file
       time.timeZone = "Europe/Berlin";

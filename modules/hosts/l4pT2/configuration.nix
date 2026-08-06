@@ -19,17 +19,12 @@ in
         zenBrowser
         age
         nmProfiles
+        plymouth
       ];
 
       boot = {
         loader.systemd-boot.enable = true;
         loader.efi.canTouchEfiVariables = true;
-        consoleLogLevel = 3;
-        kernelParams = [
-          "quiet"
-          "log_level=3"
-          "udev.log_level=3"
-        ];
       };
 
       custom.niri.useExternalConfig = true;
@@ -99,8 +94,10 @@ in
       };
 
       environment.systemPackages =
-        with pkgs;
-        [
+        let
+          system = pkgs.stdenv.hostPlatform.system;
+        in
+        (with pkgs; [
           # Dev
           helix
           gh
@@ -112,20 +109,25 @@ in
           deploy-rs
 
           # Other
+          btop
+          bat
+          mcat
           file
           yazi
           curl
           herdr
-        ]
-        ++ (with self.packages.${stdenv.hostPlatform.system}; [
+        ])
+        ++ (with self.packages.${system}; [
           # Wrapped Packages
           tmux
-        ]);
+        ])
+        # Flake Packages
+        ++ [ inputs.jcode.packages.${system}.default ];
 
       programs.nh = {
         enable = true;
         clean.enable = true;
-        clean.extraArgs = "--keep-since 4d --keep 3";
+        clean.extraArgs = "--keep-since 4d --keep 5";
         flake = "/home/cncptpr/nixfiles"; # sets NH_OS_FLAKE variable for you
       };
 

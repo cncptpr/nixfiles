@@ -26,6 +26,7 @@ in
         git
         fish
         age
+        paperless
       ];
 
       # Use the systemd-boot EFI boot loader.
@@ -38,6 +39,17 @@ in
 
       # Configure network connections interactively with nmcli or nmtui.
       networking.networkmanager.enable = true;
+
+      # Block ipv6
+      networking.nftables.enable = true;
+      networking.nftables.ruleset = ''
+        table ip6 filter {
+          chain input {
+            type filter hook input priority 0;
+            policy drop;
+          }
+        }
+      '';
 
       # from /etc/ssh/ssh_host_ed25519_key.pub
       age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJB0m5CGrE6RBEMpQLmM1gR0BhRAtxSxRn9WfjNCu90N root@h0t2";
@@ -116,6 +128,10 @@ in
           file
           yazi
           curl
+          nix-output-monitor
+          bat
+          jq
+          ripgrep
         ]
         ++ (with self.packages.${stdenv.hostPlatform.system}; [
           # Wrapped Packages

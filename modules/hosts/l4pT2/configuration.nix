@@ -103,6 +103,8 @@ in
           gh
           git
           lazygit
+          opencode
+          devenv
 
           # Nix Stuff
           nil
@@ -116,13 +118,18 @@ in
           yazi
           curl
           herdr
+          nix-output-monitor
+          bat
+          jq
+          ripgrep
         ])
         ++ (with self.packages.${system}; [
           # Wrapped Packages
           tmux
         ])
-        # Flake Packages
-        ++ [ inputs.jcode.packages.${system}.default ];
+      # Flake Packages
+      # ++ [ inputs.jcode.packages.${system}.default
+      ;
 
       programs.nh = {
         enable = true;

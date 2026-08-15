@@ -20,13 +20,21 @@ in
 
     {
       imports = with self.nixosModules; [
-        # Include the results of the hardware scan.
+        # Nixos
         h0t2Hardware
         experimentalFeatures
+        age
+
+        # Programs & Config
         git
         fish
-        age
+
+        # Services
         paperless
+        postgres
+
+        # Utils
+        ensureDirs
       ];
 
       # Use the systemd-boot EFI boot loader.

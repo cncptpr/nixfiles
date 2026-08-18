@@ -42,11 +42,9 @@
             optimize = 1;
             pdfa_image_compression = "lossless";
           };
-          PAPERLESS_URL = "https://paperless.cncptpr.xyz";
+          PAPERLESS_URL = "https://${config.services.newt.blueprint.proxy-resources.paperless.full-domain}";
         };
       };
-
-      networking.firewall.allowedTCPPorts = [ config.services.paperless.port ];
 
       custom.ensureDirs.paperless-init-directories = {
         before = [ "paperless-scheduler.service" ];

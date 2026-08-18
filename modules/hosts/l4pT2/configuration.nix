@@ -20,6 +20,7 @@ in
         age
         nmProfiles
         plymouth
+        deployScripts
       ];
 
       boot = {
@@ -32,7 +33,6 @@ in
       # from /etc/ssh/ssh_host_ed25519_key.pub
       age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfBgczI9u0+I8Q2nD50Kqm8uym/c/O2gY+DshEkb8h9 root@l4pt2";
       age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; # Must be set because openssh is not enabled
-
       networking.hostName = host;
       networking.networkmanager.enable = true;
 

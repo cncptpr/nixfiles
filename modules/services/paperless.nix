@@ -11,20 +11,18 @@
     in
     {
 
-      age.secrets."h0t2-paperless-passwd".rekeyFile = ../../../secrets/h0t2-paperless-passwd.age;
+      age.secrets."h0t2-paperless-passwd".rekeyFile = ../../secrets/h0t2-paperless-passwd.age;
 
       services.paperless = {
         enable = true;
         address = "0.0.0.0";
         port = 28981;
+
         configureTika = true; # OCR
 
         dataDir = "/mass/data/paperless";
-
-        # Paperless can import from ${dataDir}/consume
         consumptionDirIsPublic = true;
 
-        # Where does Posgress store it's data?
         database.createLocally = true;
 
         # # Whether to enable a workaround for document classifier timeouts.
@@ -54,6 +52,20 @@
           cfg.exporter.directory
           cfg.consumptionDir
           "${cfg.dataDir}/index"
+        ];
+      };
+
+      services.newt.blueprint.proxy-resources.paperless = {
+        auth.sso-enabled = false;
+        full-domain = "paperless.cncptpr.xyz";
+        name = "Paperless";
+        protocol = "http";
+        targets = [
+          {
+            hostname = "localhost";
+            method = "http";
+            port = config.services.paperless.port;
+          }
         ];
       };
     };

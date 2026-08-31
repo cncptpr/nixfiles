@@ -21,6 +21,7 @@ in
         nmProfiles
         plymouth
         deployScripts
+        nixd
       ];
 
       boot = {

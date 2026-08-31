@@ -9,7 +9,6 @@ in
     {
       pkgs,
       wlib,
-      lib,
       ...
     }:
     {
@@ -51,6 +50,7 @@ in
         environment.systemPackages =
           with pkgs;
           [
+            xwayland-satellite
             vicinae
             noctalia
             wezterm

@@ -9,5 +9,8 @@
       modeKeys = "vi";
       statusKeys = "vi";
       vimVisualKeys = true;
+      configBefore = ''
+        set extended-keys on
+      '';
     };
 }

@@ -49,6 +49,9 @@ in
 
       # Configure network connections interactively with nmcli or nmtui.
       networking.networkmanager.enable = true;
+      networking.firewall.allowedTCPPorts = [
+        3001 # freellmapi
+      ];
 
       # Block ipv6
       networking.nftables.enable = true;

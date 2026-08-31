@@ -105,11 +105,13 @@ in
           git
           lazygit
           opencode
+          pi-coding-agent
           devenv
 
           # Nix Stuff
           nil
           deploy-rs
+
 
           # Other
           btop
@@ -128,13 +130,13 @@ in
           # Wrapped Packages
           tmux
         ])
-      # Flake Packages
-      # ++ [ inputs.jcode.packages.${system}.default
+      # # Flake Packages
+      # ++ [ inputs.jcode.packages.${system}.default ]
       ;
 
       programs.nh = {
         enable = true;
-        clean.enable = true;
+        clean.enable = false;
         clean.extraArgs = "--keep-since 4d --keep 5";
         flake = "/home/cncptpr/nixfiles"; # sets NH_OS_FLAKE variable for you
       };

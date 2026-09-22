@@ -34,6 +34,8 @@ in
         newt
         paperless
         postgres
+        radicale
+        # languagetool
 
         # Utils
         ensureDirs

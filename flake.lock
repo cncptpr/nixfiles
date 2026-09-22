@@ -301,6 +301,26 @@
         "type": "github"
       }
     },
+    "leaf": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789482373,
+        "narHash": "sha256-fEIORrfUaBKAXsQwDX0K3mP8mi5OdKsknetAYs4qKJc=",
+        "owner": "cncptpr",
+        "repo": "leaf-nix",
+        "rev": "ec0f6b864c036961358eec8ee90605ea11cd1d47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cncptpr",
+        "repo": "leaf-nix",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1785967620,
@@ -395,6 +415,7 @@
         "flake-parts": "flake-parts_2",
         "import-tree": "import-tree",
         "jcode": "jcode",
+        "leaf": "leaf",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "treefmt-nix": "treefmt-nix_2",

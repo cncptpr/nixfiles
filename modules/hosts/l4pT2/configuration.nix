@@ -112,8 +112,13 @@ in
           nil
           deploy-rs
 
-
           # Other
+          wl-clipboard
+          wl-clipboard-x11
+
+          kew
+          ghgrab
+
           btop
           bat
           mcat
@@ -126,13 +131,15 @@ in
           jq
           ripgrep
         ])
+        # Wrapped Packages
         ++ (with self.packages.${system}; [
-          # Wrapped Packages
           tmux
         ])
-      # # Flake Packages
-      # ++ [ inputs.jcode.packages.${system}.default ]
-      ;
+        # Flake Packages
+        ++ (with inputs; [
+          leaf.packages.${system}.default
+          # jcode.packages.${system}.default
+        ]);
 
       programs.nh = {
         enable = true;
@@ -140,6 +147,10 @@ in
         clean.extraArgs = "--keep-since 4d --keep 5";
         flake = "/home/cncptpr/nixfiles"; # sets NH_OS_FLAKE variable for you
       };
+
+      # Virtualisation
+      virtualisation.libvirtd.enable = true;
+      users.groups.libvirt.members = [ "cncptpr" ];
 
       system.stateVersion = "26.05"; # Do not change
 

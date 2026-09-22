@@ -32,6 +32,10 @@
       url = "github:hypervideo/jcode-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    leaf = {
+      url = "github:cncptpr/leaf-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

@@ -104,9 +104,8 @@ in
           gh
           git
           lazygit
-          opencode
-          pi-coding-agent
           devenv
+          foot
 
           # Nix Stuff
           nil
@@ -134,11 +133,11 @@ in
         # Wrapped Packages
         ++ (with self.packages.${system}; [
           tmux
+          opencode
         ])
         # Flake Packages
         ++ (with inputs; [
           leaf.packages.${system}.default
-          # jcode.packages.${system}.default
         ]);
 
       programs.nh = {

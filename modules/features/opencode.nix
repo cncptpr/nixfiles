@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 {
   perSystem =
     { system, ... }:
@@ -27,4 +27,10 @@
     {
       packages.opencode = opencode;
     };
+
+  flake.nixosModules.opencode = { pkgs, ... }: {
+    environment.systemPackages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+    ];
+  };
 }

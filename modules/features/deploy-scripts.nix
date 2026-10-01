@@ -7,7 +7,10 @@ in
   flake.nixosModules.deployScripts =
     { pkgs, ... }:
     {
-      environment.systemPackages =
+      environment.systemPackages = [
+        pkgs.deploy-rs
+      ]
+      ++ (
         deployNodes
         |> lib.mapAttrsToList (
           name: _:
@@ -15,6 +18,7 @@ in
             set -euo pipefail
             deploy -sk --targets "/home/cncptpr/nixfiles#${name}" "$@" -- --log-format internal-json -v |& nom --json
           ''
-        );
+        )
+      );
     };
 }

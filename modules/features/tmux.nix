@@ -1,7 +1,5 @@
-{ ... }:
+{ self, ... }:
 {
-  # Figuring out how to write and use this tmux wrapper took 1:30h
-  # ouch
   flake.wrappers.tmux =
     { wlib, ... }:
     {
@@ -12,5 +10,15 @@
       configBefore = ''
         set extended-keys on
       '';
+    };
+
+  flake.nixosModules.tmux =
+    { pkgs, ... }:
+    let
+      system = pkgs.stdenv.hostPlatform.system;
+      tmux = self.packages.${system}.tmux;
+    in
+    {
+      environment.systemPackages = [ tmux ];
     };
 }

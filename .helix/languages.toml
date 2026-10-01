@@ -14,7 +14,7 @@ formatting = { command = [ "nixfmt" ] }
 # # for l4pt2 host
 # nixos = { expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.l4pt2.options" }
 
-# for l4pt2 host
+# for d3t2 host
 nixos = { expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.d3t2.options" }
 
 # # for h0t2 host

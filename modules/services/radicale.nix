@@ -37,16 +37,6 @@
             };
 
             storage.filesystem_folder = "/mass/data/radicale/storage";
-
-            web = {
-              type = "radicale_infcloud";
-              # The weird spacing here is on purpose to hack the INI formatter...
-              infcloud_config = ''
-                globalInterfaceLanguage = "de_DE";
-                                globalTimeZone = "Europe/Berlin";
-              '';
-            };
-
           };
           rights = {
             root = {
@@ -66,20 +56,6 @@
             };
           };
 
-          package =
-            let
-              package = (
-                # Taken from https://gitlab.com/nobodyinperson/yannix/-/blob/main/nixosModules/services/radicale/infcloud.nix
-                # pkgs.infcloud.override { withConfig = cfg.config; }
-                pkgs.infcloud
-              );
-            in
-            pkgs.radicale.overrideAttrs (oldAttrs: {
-              pname = "${oldAttrs.pname}+infcloud";
-              # https://github.com/Kozea/Radicale/wiki/Client-InfCloud
-              # inject the infcloud source into radicale's source
-              postInstall = "ln -s ${package} $out/${pkgs.python3.sitePackages}/${oldAttrs.pname}/web/internal_data/infcloud";
-            });
         };
 
         custom.ensureDirs.radicale-init-dirs =

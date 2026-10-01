@@ -3,25 +3,29 @@
   inputs,
   ...
 }:
-let
-  host = "d3t2";
-in
 {
   flake.nixosModules.d3t2Configuration =
     { lib, pkgs, ... }:
+    let
+      host = "d3t2";
+      system = pkgs.stdenv.hostPlatform.system;
+    in
     {
       imports = with self.nixosModules; [
         d3t2Hardware
-        experimentalFeatures
-        git
-        fish
-        niri
-        zenBrowser
+
+        base
+        graphical
+
         # age
         # nmProfiles
-        plymouth
+
+        openssh
+
         deployScripts
         nixd
+
+        opencode
       ];
 
       boot.loader = {
@@ -31,7 +35,6 @@ in
           efiSupport = true;
           useOSProber = true;
         };
-        # systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
       };
 
@@ -44,60 +47,11 @@ in
       networking.networkmanager.enable = true;
       networking.firewall.enable = false;
 
-      time.timeZone = "Europe/Berlin";
-      i18n.defaultLocale = "en_US.UTF-8";
-      i18n.extraLocaleSettings = {
-        LC_ADDRESS = "de_DE.UTF-8";
-        LC_IDENTIFICATION = "de_DE.UTF-8";
-        LC_MEASUREMENT = "de_DE.UTF-8";
-        LC_MONETARY = "de_DE.UTF-8";
-        LC_NAME = "de_DE.UTF-8";
-        LC_NUMERIC = "de_DE.UTF-8";
-        LC_PAPER = "de_DE.UTF-8";
-        LC_TELEPHONE = "de_DE.UTF-8";
-        LC_TIME = "de_DE.UTF-8";
-      };
-      console.keyMap = "de";
-
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
 
-      services.printing.enable = true;
-      services.pulseaudio.enable = false;
-      security.rtkit.enable = true;
-      services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
-
-      programs.dconf.profiles.user.databases = [
-        {
-          settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-        }
-      ];
-
-      users.users."cncptpr" = {
-        isNormalUser = true;
-        description = "cncptpr";
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-        ];
-        shell = pkgs.fish;
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORD/6qz7wZxaZZwF37bNQad4KZYVEzeeCOsorCRfpNs"
-        ];
-      };
-
       services.tailscale = {
         enable = true;
-      };
-
-      services.openssh = {
-        enable = true;
-        passwordAuthentication = false;
       };
 
       programs.firefox.enable = true;
@@ -105,73 +59,36 @@ in
       nixpkgs.config.allowUnfree = true;
 
       environment.variables = {
-        EDITOR = "hx";
-        TERM = "xterm-256color";
         AGENT_BROWSER_EXECUTABLE_PATH = "${lib.getExe pkgs.chromium}";
       };
 
-      environment.systemPackages =
-        let
-          system = pkgs.stdenv.hostPlatform.system;
-        in
-        (with pkgs; [
-          # Dev
-          helix
-          gh
-          git
-          lazygit
-          devenv
+      environment.systemPackages = with pkgs; [
+        gh
+        lazygit
+        devenv
 
-          agent-browser
-          chromium
+        agent-browser
+        chromium
 
-          # Nix Stuff
-          nil
-          deploy-rs
+        nil
 
-          # Other
-          btop
-          bat
-          mcat
-          file
-          yazi
-          curl
-          herdr
-          nix-output-monitor
-          bat
-          jq
-          ripgrep
-          signal-desktop
+        # Other
+        herdr
+        nix-output-monitor
 
-          # Games
-          ntfs3g
-          heroic
-          lutris
+        ntfs3g
+        heroic
+        lutris
 
-          # Minecraft
-          prismlauncher
+        prismlauncher
 
-        ])
-        # Custom Packages
-        ++ (with self.packages.${system}; [
-          tmux
-          opencode
-        ])
-        # Flake Packages
-        ++ (with inputs; [
-          leaf.packages.${system}.default
-        ]);
-
-      programs.nh = {
-        enable = true;
-        clean.enable = false;
-        clean.extraArgs = "--keep-since 4d --keep 5";
-        flake = "/home/cncptpr/nixfiles"; # sets NH_OS_FLAKE variable for you
-      };
+        inputs.leaf.packages.${system}.default
+      ];
 
       programs.steam.enable = true;
 
-      # Nvidia
+      ## Nvidia ##
+
       hardware.graphics.enable = true;
 
       services.xserver.videoDrivers = [ "nvidia" ];

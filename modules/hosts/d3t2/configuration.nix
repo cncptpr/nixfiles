@@ -1,5 +1,6 @@
 {
   self,
+  inputs,
   ...
 }:
 let
@@ -7,7 +8,7 @@ let
 in
 {
   flake.nixosModules.d3t2Configuration =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     {
       imports = with self.nixosModules; [
         d3t2Hardware
@@ -41,6 +42,7 @@ in
       # age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; # Must be set because openssh is not enabled
       networking.hostName = host;
       networking.networkmanager.enable = true;
+      networking.firewall.enable = false;
 
       time.timeZone = "Europe/Berlin";
       i18n.defaultLocale = "en_US.UTF-8";
@@ -57,8 +59,6 @@ in
       };
       console.keyMap = "de";
 
-      # services.displayManager.sddm.enable = true;
-      # services.displayManager.sddm.wayland.enable = true;
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
 
@@ -86,10 +86,18 @@ in
           "wheel"
         ];
         shell = pkgs.fish;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORD/6qz7wZxaZZwF37bNQad4KZYVEzeeCOsorCRfpNs"
+        ];
       };
 
       services.tailscale = {
         enable = true;
+      };
+
+      services.openssh = {
+        enable = true;
+        passwordAuthentication = false;
       };
 
       programs.firefox.enable = true;
@@ -99,6 +107,7 @@ in
       environment.variables = {
         EDITOR = "hx";
         TERM = "xterm-256color";
+        AGENT_BROWSER_EXECUTABLE_PATH = "${lib.getExe pkgs.chromium}";
       };
 
       environment.systemPackages =
@@ -111,8 +120,10 @@ in
           gh
           git
           lazygit
-          opencode
           devenv
+
+          agent-browser
+          chromium
 
           # Nix Stuff
           nil
@@ -130,6 +141,7 @@ in
           bat
           jq
           ripgrep
+          signal-desktop
 
           # Games
           ntfs3g
@@ -140,13 +152,15 @@ in
           prismlauncher
 
         ])
+        # Custom Packages
         ++ (with self.packages.${system}; [
-          # Wrapped Packages
           tmux
+          opencode
         ])
-      # # Flake Packages
-      # ++ [ inputs.jcode.packages.${system}.default ]
-      ;
+        # Flake Packages
+        ++ (with inputs; [
+          leaf.packages.${system}.default
+        ]);
 
       programs.nh = {
         enable = true;

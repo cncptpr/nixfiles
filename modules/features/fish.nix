@@ -80,6 +80,8 @@
                   herdr-go "$picked"
               end
           end
+
+          devenv hook fish | source
         '';
         shellAliases = lib.mkMerge [
           {

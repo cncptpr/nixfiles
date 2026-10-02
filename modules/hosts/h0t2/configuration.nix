@@ -30,6 +30,7 @@ in
         postgres
         radicale
         # languagetool
+        perfectSmithing
 
         # Utils
         ensureDirs

@@ -42,6 +42,11 @@
     nixpkgs-opencode = {
       url = "github:nixos/nixpkgs/9dd5558b06dbdacbf635a3dd36dce1b1a7ee3a89";
     };
+
+    perfect-smithing = {
+      url = "github:cncptpr/perfect-smithing";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

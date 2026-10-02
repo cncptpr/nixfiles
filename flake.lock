@@ -378,6 +378,26 @@
         "type": "github"
       }
     },
+    "perfect-smithing": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790946946,
+        "narHash": "sha256-3+0MnA+EHrOGoTnUX8RSseYUjk7yFPnw1QDF4yaxD00=",
+        "owner": "cncptpr",
+        "repo": "perfect-smithing",
+        "rev": "f474353ebb747e54584a28bf586a7380471a0751",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cncptpr",
+        "repo": "perfect-smithing",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -413,6 +433,7 @@
         "nixpkgs-opencode": "nixpkgs-opencode",
         "nixpkgs-stable": "nixpkgs-stable",
         "opencode": "opencode",
+        "perfect-smithing": "perfect-smithing",
         "treefmt-nix": "treefmt-nix_2",
         "wrapper-modules": "wrapper-modules",
         "zen-browser": "zen-browser"

@@ -16,6 +16,8 @@
     environment.systemPackages = with pkgs; [
       btop
       curl
+      dust
+      fastfetch
       file
       helix
       jq

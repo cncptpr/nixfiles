@@ -6,6 +6,9 @@
       pkgs,
       ...
     }:
+    let
+      cfg = config.services.radicale;
+    in
     {
       config = {
         age.secrets."radicale-users" = {
@@ -58,16 +61,10 @@
 
         };
 
-        custom.ensureDirs.radicale-init-dirs =
-          let
-            cfg = config.services.radicale;
-          in
-          {
-            before = [ config.systemd.services.radicale.name ];
-            dirs = [ cfg.settings.storage.filesystem_folder ];
-            user = cfg.user;
-            group = cfg.group;
-          };
+        ensureDirs.dirs.${cfg.settings.storage.filesystem_folder} = {
+          user = cfg.user;
+          group = cfg.group;
+        };
 
         services.newt.blueprint.proxy-resources.radicale = {
           auth.sso-enabled = false;

@@ -1,4 +1,5 @@
 {
+  inputs,
   self,
   ...
 }:
@@ -34,7 +35,7 @@ in
         shogging
 
         # Utils
-        ensureDirs
+        inputs.ensure-dirs.nixosModules.default
       ];
 
       # Use the systemd-boot EFI boot loader.

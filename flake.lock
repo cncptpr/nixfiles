@@ -112,6 +112,26 @@
         "type": "github"
       }
     },
+    "ensure-dirs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791118322,
+        "narHash": "sha256-/GIflBljVGIDKIpKFUIHiH6SM7pPT4avE/Q6cDFlEyw=",
+        "owner": "cncptpr",
+        "repo": "ensure-dirs",
+        "rev": "8e1c6d825944725ab31def19cefb6229c12f6907",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cncptpr",
+        "repo": "ensure-dirs",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -448,6 +468,7 @@
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
         "deploy-rs": "deploy-rs",
+        "ensure-dirs": "ensure-dirs",
         "flake-parts": "flake-parts_2",
         "import-tree": "import-tree",
         "leaf": "leaf",

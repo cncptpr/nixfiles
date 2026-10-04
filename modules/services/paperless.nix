@@ -44,16 +44,18 @@
         };
       };
 
-      custom.ensureDirs.paperless-init-directories = {
-        before = [ "paperless-scheduler.service" ];
-        user = "paperless";
-        dirs = [
-          cfg.mediaDir
-          cfg.exporter.directory
-          cfg.consumptionDir
-          "${cfg.dataDir}/index"
-        ];
-      };
+      ensureDirs.dirs =
+        lib.genAttrs
+          [
+            cfg.mediaDir
+            cfg.exporter.directory
+            cfg.consumptionDir
+            "${cfg.dataDir}/index"
+          ]
+          (_: {
+            user = cfg.user;
+            group = cfg.group;
+          });
 
       services.newt.blueprint.proxy-resources.paperless = {
         auth.sso-enabled = false;

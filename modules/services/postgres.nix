@@ -6,15 +6,9 @@
       settings.port = 5432;
     };
 
-    custom.ensureDirs.postgres-init-directories = {
-      before = [
-        "postgresql.service"
-        "postgresql-setup.service"
-      ];
+    ensureDirs.dirs.${config.services.postgresql.dataDir} = {
       user = "postgres";
-      dirs = [
-        config.services.postgresql.dataDir
-      ];
+      group = "postgres";
     };
   };
 }

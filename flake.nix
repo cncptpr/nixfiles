@@ -52,6 +52,11 @@
       url = "github:cncptpr/shogging";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ensure-dirs = {
+      url = "github:cncptpr/ensure-dirs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

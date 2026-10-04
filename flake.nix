@@ -47,6 +47,11 @@
       url = "github:cncptpr/perfect-smithing";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    shogging = {
+      url = "github:cncptpr/shogging";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

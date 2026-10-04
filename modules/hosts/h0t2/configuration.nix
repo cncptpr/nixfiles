@@ -31,6 +31,7 @@ in
         radicale
         # languagetool
         perfectSmithing
+        shogging
 
         # Utils
         ensureDirs

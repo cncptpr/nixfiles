@@ -282,6 +282,28 @@
         "type": "github"
       }
     },
+    "nix-gleam": {
+      "inputs": {
+        "nixpkgs": [
+          "shogging",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791059599,
+        "narHash": "sha256-bEgGLbFub1q1L0brRpDRrwPSAvvCLgF4TG7EjvdcDPw=",
+        "owner": "cncptpr",
+        "repo": "nix-gleam",
+        "rev": "9d259a6b9fb4cae338a5dad5ca5d1d4e96a8f529",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cncptpr",
+        "ref": "fix/local-packages",
+        "repo": "nix-gleam",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1790046670,
@@ -385,11 +407,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790946946,
-        "narHash": "sha256-3+0MnA+EHrOGoTnUX8RSseYUjk7yFPnw1QDF4yaxD00=",
+        "lastModified": 1790963846,
+        "narHash": "sha256-F/VB1RUNzZksbaFjsLs5gQBM3bUbrjMzRXOritPrhNA=",
         "owner": "cncptpr",
         "repo": "perfect-smithing",
-        "rev": "f474353ebb747e54584a28bf586a7380471a0751",
+        "rev": "02eaa277a2d9e522b176360586f4963156e36335",
         "type": "github"
       },
       "original": {
@@ -434,9 +456,31 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "opencode": "opencode",
         "perfect-smithing": "perfect-smithing",
+        "shogging": "shogging",
         "treefmt-nix": "treefmt-nix_2",
         "wrapper-modules": "wrapper-modules",
         "zen-browser": "zen-browser"
+      }
+    },
+    "shogging": {
+      "inputs": {
+        "nix-gleam": "nix-gleam",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791068027,
+        "narHash": "sha256-6NyQy+9DmxAlhOZ7RYB6o3rkAiwdNfc+vUEPk8ydVOA=",
+        "owner": "cncptpr",
+        "repo": "shogging",
+        "rev": "c6a81a5529f45414163a7bb1a3a9ac67ff85e2c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cncptpr",
+        "repo": "shogging",
+        "type": "github"
       }
     },
     "systems": {

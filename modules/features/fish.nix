@@ -15,6 +15,8 @@
       yazi = lib.getExe pkgs.yazi;
     in
     {
+      environment.systemPackages = with pkgs; [ devenv ];
+
       programs.fish = {
         enable = true;
         shellInit = ''

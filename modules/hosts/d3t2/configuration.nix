@@ -16,8 +16,7 @@
 
         base
         graphical
-
-        # age
+        age
         # nmProfiles
 
         openssh
@@ -41,8 +40,9 @@
       custom.niri.useExternalConfig = true;
 
       # from /etc/ssh/ssh_host_ed25519_key.pub
-      # age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICfBgczI9u0+I8Q2nD50Kqm8uym/c/O2gY+DshEkb8h9 root@l4pt2";
-      # age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; # Must be set because openssh is not enabled
+      age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIJemS4Lv6sX/bm5zcbJul3vCoSpLl5hAqOryo7NHHV0 root@d3t2";
+      age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; # Must be set if openssh is not enabled
+      
       networking.hostName = host;
       networking.networkmanager.enable = true;
       networking.firewall.enable = false;

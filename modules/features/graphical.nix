@@ -1,4 +1,4 @@
-{ self, ... }: {
+{ self, inputs, ... }: {
   flake.nixosModules.graphical = { pkgs, ... }: {
 
     imports = with self.nixosModules; [
@@ -11,6 +11,7 @@
       wl-clipboard-x11
 
       signal-desktop
+      inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     services.displayManager.gdm.enable = true;

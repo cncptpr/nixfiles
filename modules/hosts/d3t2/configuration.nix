@@ -19,6 +19,8 @@
         age
         # nmProfiles
 
+        deployUser
+
         openssh
 
         deployScripts

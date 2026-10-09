@@ -35,6 +35,12 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/mass" =
+    { device = "/dev/disk/by-uuid/8EC7-E767";
+      fsType = "exfat";
+      options = [ "uid=1000" "gid=100" "umask=022" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/901db28d-ead7-4589-abf8-9648eba4d306"; }
     ];

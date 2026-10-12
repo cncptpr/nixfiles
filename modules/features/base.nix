@@ -1,4 +1,4 @@
-{ self, ... }: {
+{ self, inputs, ... }: {
   flake.nixosModules.base = { pkgs, ... }: {
     imports = with self.nixosModules; [
       experimentalFeatures
@@ -25,6 +25,7 @@
       ripgrep
       tree
       yazi
+      libqalculate
     ];
 
     environment.variables = {

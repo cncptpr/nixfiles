@@ -548,11 +548,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791225385,
-        "narHash": "sha256-+5OMI8aUdVVtP0XkaI+zpzujpN0CNRVCDrE/ypHMz3M=",
+        "lastModified": 1791307316,
+        "narHash": "sha256-d3hLU+cpexQVibPG6ullzsECrsXHlp/0n9ulXYoQ8oI=",
         "owner": "cncptpr",
         "repo": "shogging",
-        "rev": "7544acdf7e3122b2937af6f5c00d75dab50c7398",
+        "rev": "449ff1aaf454f180eaf52b5423d736a13cd6bf09",
         "type": "github"
       },
       "original": {

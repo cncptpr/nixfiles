@@ -96,11 +96,11 @@
             lg = "lazygit";
           }
           (lib.mkIf config.virtualisation.docker.enable {
-            du = "docker compose up -d";
-            dua = "docker compose up";
-            dd = "docker compose down";
+            du = "sudo docker compose up -d";
+            dua = "sudo docker compose up";
+            dd = "sudo docker compose down";
             dr = "dd && du";
-            dy = "docker compose pull && dr";
+            dy = "sudo docker compose pull && dr";
           })
         ];
       };

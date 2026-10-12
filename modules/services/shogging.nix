@@ -2,17 +2,17 @@
   flake.nixosModules.shogging = { config, ... }: {
     imports = [ inputs.shogging.nixosModules.default ];
 
-    age.secrets."shogging-caldav-passwordfile".rekeyFile =
-      ../../secrets/shogging-caldav-passwordfile.age;
+    age.secrets."shogging-nextcloud-passwordfile".rekeyFile =
+      ../../secrets/shogging-nextcloud-passwordfile.age;
 
     services.shogging = {
       enable = true;
-      motto = "Running against Radicale";
+      # motto = "";
       caldav = {
-        host = "http://localhost:${toString config.custom.radicale.port}/";
-        username = "timon";
-        calendar = "Shopping List";
-        passwordFile = config.age.secrets."shogging-caldav-passwordfile".path;
+        host = "https://cloud.fsim-ev.de/";
+        username = "bot";
+        calendar = "AK-Einkauf (FSIM)";
+        passwordFile = config.age.secrets."shogging-nextcloud-passwordfile".path;
       };
       port = 1234;
     };

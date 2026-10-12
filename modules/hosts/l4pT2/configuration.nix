@@ -34,6 +34,8 @@
         efi.canTouchEfiVariables = true;
       };
 
+      services.openssh.enable = true;
+
       custom.niri.useExternalConfig = true;
 
       # from /etc/ssh/ssh_host_ed25519_key.pub
@@ -56,12 +58,17 @@
         herdr
         nix-output-monitor
 
+        eduvpn-client
+
         thunderbird
         inputs.leaf.packages.${system}.default
       ];
 
       virtualisation.libvirtd.enable = true;
       users.groups.libvirt.members = [ "cncptpr" ];
+
+      virtualisation.virtualbox.host.enable = true;
+      users.extraGroups.vboxusers.members = [ "cncptpr" ];
 
       system.stateVersion = "26.05"; # Do not change
 

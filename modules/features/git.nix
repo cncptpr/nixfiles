@@ -12,5 +12,10 @@
           alias.adog = "log --all --decorate --oneline --graph";
         };
       };
+
+      programs.ssh.extraConfig = ''
+        Host git.fsim-ev.de
+          Port 8080
+      '';
     };
 }

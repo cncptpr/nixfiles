@@ -74,6 +74,8 @@
 
         nil
 
+        discord
+
         # Other
         herdr
         nix-output-monitor

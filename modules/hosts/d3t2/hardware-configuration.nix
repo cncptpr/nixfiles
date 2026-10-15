@@ -35,9 +35,9 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/mass" =
-    { device = "/dev/disk/by-uuid/8EC7-E767";
-      fsType = "exfat";
+  fileSystems."/mass" =
+    { device = "/dev/disk/by-label/mass";
+      fsType = "ntfs-3g";
       options = [ "uid=1000" "gid=100" "umask=022" ];
     };
 

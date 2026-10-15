@@ -4,6 +4,7 @@
       experimentalFeatures
       cncptprUser
       locales
+      udiskie
 
       # Programs & Config
       git
@@ -26,6 +27,9 @@
       tree
       yazi
       libqalculate
+      rclone
+      pv
+      nmap
     ];
 
     environment.variables = {

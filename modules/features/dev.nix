@@ -1,6 +1,11 @@
 {
   flake.nixosModules.dev = {pkgs, ...}:{
     environment.systemPackages = with pkgs; [
+      # Git
+      lazygit
+      gh
+      forgejo-cli
+      
       # Typst
       tinymist
 
@@ -11,6 +16,9 @@
       cargo
       cargo-leptos
       rust-analyzer
+      rustc
+      clippy
+      bacon
 
       # Scripts
       python3

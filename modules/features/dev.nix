@@ -1,10 +1,10 @@
-{
+{ inputs, ... }: {
   flake.nixosModules.dev = {pkgs, ...}:{
     environment.systemPackages = with pkgs; [
       # Git
       lazygit
       gh
-      forgejo-cli
+      forgejo-cli #fj
       
       # Typst
       tinymist
@@ -20,10 +20,15 @@
       clippy
       bacon
 
-      # Scripts
+      # Python
       python3
       uv
+      ty
+      ruff
+
+      # JS
       nodejs
+      pnpm
 
       # C/C++
       libclang
@@ -33,6 +38,8 @@
       cmake
       meson
       ninja
+      stdenv.cc.cc.lib
+      zlib
     ];
   };
 }

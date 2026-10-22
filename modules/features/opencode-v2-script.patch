@@ -1,0 +1,12 @@
+diff --git a/nix/node_modules.nix b/nix/node_modules.nix
+index 4a6dfe4..c3d6e4b 100644
+--- a/nix/node_modules.nix
++++ b/nix/node_modules.nix
+@@ -31,6 +31,7 @@ stdenvNoCC.mkDerivation {
+         ../patches
+         ../install # required by desktop build (cli.rs include_str!)
+         ../.github/TEAM_MEMBERS # required by @opencode/script
++        ../script # required by packages/cli build (native-arch)
+       ]
+     );
+   };

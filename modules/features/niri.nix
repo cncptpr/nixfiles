@@ -54,6 +54,19 @@ in
             vicinae
             noctalia
             wezterm
+
+            ##### Nocatlia Plugins #####
+            # Animated wallpaper
+            mpvpaper
+
+            # OCR Copy
+            grim
+            slurp
+            tesseract
+
+            # Shelf
+            python3Packages.pygobject3
+            gtk4
           ]
           ++ (
             if cfg.installFallbackPackages then
@@ -75,7 +88,7 @@ in
           # partOf = "graphical-session.target";
 
           serviceConfig = {
-            # Find a better way to inherit the normal PATH
+            # This is apparently the best way to provide a full nixos PATH
             Environment = "PATH=/run/wrappers/bin:%h/.nix-profile/bin:/nix/profile/bin:%h/.local/state/nix/profile/bin:/etc/profiles/per-user/cncptpr/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin";
             Type = "simple";
             ExecStart = "${lib.getExe pkgs.vicinae} server";
@@ -87,12 +100,14 @@ in
         };
 
         systemd.user.services.noctalia = {
+
           enable = true;
           description = "Noctalia Shell";
           after = [ "graphical-session.target" ];
           # partOf = "graphical-session.target";
 
           serviceConfig = {
+            Environment = "PATH=/run/wrappers/bin:%h/.nix-profile/bin:/nix/profile/bin:%h/.local/state/nix/profile/bin:/etc/profiles/per-user/cncptpr/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin";
             Type = "simple";
             ExecStart = "${lib.getExe pkgs.noctalia}";
             Restart = "on-failure";

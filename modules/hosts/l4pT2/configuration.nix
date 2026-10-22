@@ -7,8 +7,8 @@
   flake.nixosModules.l4pt2Configuration =
     { pkgs, ... }:
     let
-      system = pkgs.stdenv.hostPlatform.system;
       host = "l4pt2";
+      system = pkgs.stdenv.hostPlatform.system;
     in
     {
       imports = with self.nixosModules; [
@@ -22,7 +22,6 @@
         nmProfiles
         deployScripts
         nixd
-
         opencode
       ];
 
@@ -48,22 +47,33 @@
 
       services.tailscale.enable = true;
 
-      environment.systemPackages = with pkgs; [
-        gh
-        lazygit
-        devenv
+      environment.systemPackages =
+        (with pkgs; [
+          monocraft
 
-        ghgrab
+          gh
+          lazygit
+          devenv
 
-        bat
-        herdr
-        nix-output-monitor
+          ghgrab
 
-        eduvpn-client
+          bat
+          herdr
+          nix-output-monitor
 
-        thunderbird
-        inputs.leaf.packages.${system}.default
-      ];
+          eduvpn-client
+
+          thunderbird
+
+          agent-browser
+          chromium
+        ])
+        ++ (
+          with inputs;
+          map (input: input.packages.${system}.default) [
+            leaf
+          ]
+        );
 
       virtualisation.libvirtd.enable = true;
       users.groups.libvirt.members = [ "cncptpr" ];

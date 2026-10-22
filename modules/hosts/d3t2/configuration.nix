@@ -25,7 +25,6 @@
 
         deployScripts
         nixd
-
         opencode
       ];
 
@@ -44,7 +43,7 @@
       # from /etc/ssh/ssh_host_ed25519_key.pub
       age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIJemS4Lv6sX/bm5zcbJul3vCoSpLl5hAqOryo7NHHV0 root@d3t2";
       age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; # Must be set if openssh is not enabled
-      
+
       networking.hostName = host;
       networking.networkmanager.enable = true;
       networking.firewall.enable = false;
@@ -64,30 +63,35 @@
         AGENT_BROWSER_EXECUTABLE_PATH = "${lib.getExe pkgs.chromium}";
       };
 
-      environment.systemPackages = with pkgs; [
-        gh
-        lazygit
-        devenv
+      environment.systemPackages =
+        (with pkgs; [
+          gh
+          lazygit
+          devenv
 
-        agent-browser
-        chromium
+          agent-browser
+          chromium
 
-        nil
+          nil
 
-        discord
+          discord
 
-        # Other
-        herdr
-        nix-output-monitor
+          # Other
+          herdr
+          nix-output-monitor
 
-        ntfs3g
-        heroic
-        lutris
+          ntfs3g
+          heroic
+          lutris
 
-        prismlauncher
-
-        inputs.leaf.packages.${system}.default
-      ];
+          prismlauncher
+        ])
+        ++ (
+          with inputs;
+          map (input: input.packages.${system}.default) [
+            leaf
+          ]
+        );
 
       programs.steam.enable = true;
 

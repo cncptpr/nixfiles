@@ -26,6 +26,7 @@
             "addon@darkreader.org" = defaultCfg; # darkreader
             "idcac-pub@guus.ninja" = defaultCfg; # I still don't care about cookies
             "uBlock0@raymondhill.net" = defaultCfg; # uBlock
+            "languagetool-webextension@languagetool.org" = defaultCfg; #languagetool
           };
         };
       };

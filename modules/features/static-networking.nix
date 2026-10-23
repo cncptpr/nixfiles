@@ -41,7 +41,9 @@
               address = cfg.gateway;
               interface = cfg.interface;
             };
+            dhcpcd.enable = false;
           };
         };
+    
     };
 }

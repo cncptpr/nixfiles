@@ -28,10 +28,11 @@ in
         experimentalFeatures
         staticNetworking
         rustdeskServer
-        mastodon
+        # mastodon
         git
         fish
         age
+        tmux
       ];
 
       staticNetworking = {
@@ -104,11 +105,16 @@ in
           AllowUsers = [ "cncptpr" ];
         };
       };
+
+      virtualisation.docker = {
+        enable = true;
+      };
+
       # Define a user account. Don't forget to set a password with ‘passwd’.
       users.users.cncptpr = {
         isNormalUser = true;
         description = "cncptpr";
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "docker" "wheel" ];
         shell = pkgs.fish;
         packages = with pkgs; [
           helix

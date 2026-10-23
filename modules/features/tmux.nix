@@ -9,7 +9,9 @@
       vimVisualKeys = true;
       configBefore = ''
         set extended-keys on
+        set -as terminal-features ",xterm-256color:RGB"
       '';
+      terminal = "tmux";
     };
 
   flake.nixosModules.tmux =

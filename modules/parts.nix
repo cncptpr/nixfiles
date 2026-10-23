@@ -1,4 +1,11 @@
-{ inputs, ... }: {
+{ inputs, lib, ... }: {
+  options = {
+    # To allow flake-parts to merge deploy configs
+    flake.deploy = lib.mkOption {
+      type = lib.types.lazyAttrsOf lib.types.attrs;
+      default = { };
+    };
+  };
   imports = [ inputs.wrapper-modules.flakeModules.default ];
   config = {
     systems = [

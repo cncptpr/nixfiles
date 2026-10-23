@@ -85,11 +85,9 @@ in
           enable = true;
           description = "Vicinae Server";
           after = [ "graphical-session.target" ];
-          # partOf = "graphical-session.target";
+          enableDefaultPath = false;
 
           serviceConfig = {
-            # This is apparently the best way to provide a full nixos PATH
-            Environment = "PATH=/run/wrappers/bin:%h/.nix-profile/bin:/nix/profile/bin:%h/.local/state/nix/profile/bin:/etc/profiles/per-user/cncptpr/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin";
             Type = "simple";
             ExecStart = "${lib.getExe pkgs.vicinae} server";
             Restart = "on-failure";
@@ -104,10 +102,9 @@ in
           enable = true;
           description = "Noctalia Shell";
           after = [ "graphical-session.target" ];
-          # partOf = "graphical-session.target";
+          enableDefaultPath = false;
 
           serviceConfig = {
-            Environment = "PATH=/run/wrappers/bin:%h/.nix-profile/bin:/nix/profile/bin:%h/.local/state/nix/profile/bin:/etc/profiles/per-user/cncptpr/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin";
             Type = "simple";
             ExecStart = "${lib.getExe pkgs.noctalia}";
             Restart = "on-failure";

@@ -67,6 +67,8 @@
 
           agent-browser
           chromium
+
+          self.packages.${system}.sping
         ])
         ++ (
           with inputs;

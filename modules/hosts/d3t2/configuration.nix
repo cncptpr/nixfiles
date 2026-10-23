@@ -16,6 +16,7 @@
 
         base
         graphical
+        dev
         age
         # nmProfiles
 

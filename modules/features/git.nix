@@ -16,6 +16,10 @@
       programs.ssh.extraConfig = ''
         Host git.fsim-ev.de
           Port 8080
+          User forgejo
+
+        Host github.com
+          User git
       '';
     };
 }

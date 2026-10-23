@@ -87,13 +87,23 @@
         '';
         shellAliases = lib.mkMerge [
           {
+
             gs = "git status";
             ga = "git add -A";
+            gap = "git add -p";
+            gai = "git add --intend-to-add";
             gc = "git commit";
+            gcm = "git commit -m";
             gp = "git push";
+            gl = "git pull";
+            glr = "git pull -r";
             gd = "git diff";
             adog = "git log --all --decorate --oneline --graph";
             lg = "lazygit";
+            grc = "git rebase --continue";
+            gra = "git rebase --abort";
+            gcd = "git switch";
+            gmk = "git switch -c";
           }
           (lib.mkIf config.virtualisation.docker.enable {
             du = "sudo docker compose up -d";

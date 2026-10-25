@@ -8,7 +8,6 @@
     { lib, pkgs, ... }:
     let
       host = "d3t2";
-      system = pkgs.stdenv.hostPlatform.system;
     in
     {
       imports = with self.nixosModules; [
@@ -64,35 +63,30 @@
         AGENT_BROWSER_EXECUTABLE_PATH = "${lib.getExe pkgs.chromium}";
       };
 
-      environment.systemPackages =
-        (with pkgs; [
-          gh
-          lazygit
-          devenv
+      environment.systemPackages = with pkgs; [
+        gh
+        lazygit
+        devenv
 
-          agent-browser
-          chromium
+        agent-browser
+        chromium
 
-          nil
+        nil
 
-          discord
+        discord
 
-          # Other
-          herdr
-          nix-output-monitor
+        # Other
+        herdr
+        nix-output-monitor
 
-          ntfs3g
-          heroic
-          lutris
+        ntfs3g
+        heroic
+        lutris
 
-          prismlauncher
-        ])
-        ++ (
-          with inputs;
-          map (input: input.packages.${system}.default) [
-            leaf
-          ]
-        );
+        prismlauncher
+
+        eduvpn-client
+      ];
 
       programs.steam.enable = true;
 

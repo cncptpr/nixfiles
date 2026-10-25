@@ -339,22 +339,18 @@
       }
     },
     "leaf": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
+      "flake": false,
       "locked": {
-        "lastModified": 1789482373,
-        "narHash": "sha256-fEIORrfUaBKAXsQwDX0K3mP8mi5OdKsknetAYs4qKJc=",
-        "owner": "cncptpr",
-        "repo": "leaf-nix",
-        "rev": "ec0f6b864c036961358eec8ee90605ea11cd1d47",
+        "lastModified": 1792606777,
+        "narHash": "sha256-Q9p18pF96mQPaGj1ic225naMRd0+hwD6YlG6GwD4gig=",
+        "owner": "RivoLink",
+        "repo": "leaf",
+        "rev": "568d45131c9b08fdac2759202bfc1a1218a77b96",
         "type": "github"
       },
       "original": {
-        "owner": "cncptpr",
-        "repo": "leaf-nix",
+        "owner": "RivoLink",
+        "repo": "leaf",
         "type": "github"
       }
     },
@@ -535,6 +531,7 @@
         "opencode": "opencode",
         "perfect-smithing": "perfect-smithing",
         "shogging": "shogging",
+        "sping": "sping",
         "treefmt-nix": "treefmt-nix_2",
         "wrapper-modules": "wrapper-modules",
         "zen-browser": "zen-browser"
@@ -558,6 +555,22 @@
       "original": {
         "owner": "cncptpr",
         "repo": "shogging",
+        "type": "github"
+      }
+    },
+    "sping": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792755057,
+        "narHash": "sha256-emZ6LluRMf5PkN+P/mevfry0PWLprR/7eNw1Lp/h/nM=",
+        "owner": "LambdaBytes",
+        "repo": "sping",
+        "rev": "657f64b15125f93cf3e04f66cf67e6313d538f79",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LambdaBytes",
+        "repo": "sping",
         "type": "github"
       }
     },

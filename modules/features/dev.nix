@@ -1,11 +1,17 @@
-{ inputs, ... }: {
-  flake.nixosModules.dev = {pkgs, ...}:{
+{ self, ... }: {
+  flake.nixosModules.dev = { pkgs, ... }: {
+
+    imports = with self.nixosModules; [
+      sping
+      leaf
+    ];
+
     environment.systemPackages = with pkgs; [
       # Git
       lazygit
       gh
-      forgejo-cli #fj
-      
+      forgejo-cli # fj
+
       # Typst
       tinymist
 

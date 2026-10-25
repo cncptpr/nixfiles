@@ -8,7 +8,6 @@
     { pkgs, ... }:
     let
       host = "l4pt2";
-      system = pkgs.stdenv.hostPlatform.system;
     in
     {
       imports = with self.nixosModules; [
@@ -47,35 +46,26 @@
 
       services.tailscale.enable = true;
 
-      environment.systemPackages =
-        (with pkgs; [
-          monocraft
+      environment.systemPackages = with pkgs; [
+        monocraft
 
-          gh
-          lazygit
-          devenv
+        gh
+        lazygit
+        devenv
 
-          ghgrab
+        ghgrab
 
-          bat
-          herdr
-          nix-output-monitor
+        bat
+        herdr
+        nix-output-monitor
 
-          eduvpn-client
+        eduvpn-client
 
-          thunderbird
+        thunderbird
 
-          agent-browser
-          chromium
-
-          self.packages.${system}.sping
-        ])
-        ++ (
-          with inputs;
-          map (input: input.packages.${system}.default) [
-            leaf
-          ]
-        );
+        agent-browser
+        chromium
+      ];
 
       virtualisation.libvirtd.enable = true;
       users.groups.libvirt.members = [ "cncptpr" ];

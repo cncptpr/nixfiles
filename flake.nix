@@ -28,10 +28,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    leaf = {
-      url = "github:cncptpr/leaf-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     opencode = {
       url = "github:anomalyco/opencode/v2.0.32";
       flake = false;
@@ -61,6 +57,14 @@
     helium = {
       url = "github:AlvaroParker/helium-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    leaf = {
+      url = "github:RivoLink/leaf";
+      flake = false;
+    };
+    sping = {
+      url = "github:LambdaBytes/sping";
+      flake = false;
     };
   };
 

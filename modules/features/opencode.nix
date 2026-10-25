@@ -13,9 +13,12 @@
         # The local script fileset patch changes the fixed-output input from
         # the hash published by OpenCode for v2.0.32. This is the hash for the
         # x86_64-linux host currently supported by this configuration.
-        if system == "x86_64-linux" then {
-          hash = "sha256-9h+QT6+lahxfQM8u1N5F6fxi4Ah3vSS9JYV52jpSfoU=";
-        } else { }
+        if system == "x86_64-linux" then
+          {
+            hash = "sha256-9h+QT6+lahxfQM8u1N5F6fxi4Ah3vSS9JYV52jpSfoU=";
+          }
+        else
+          { }
       );
       opencode = pkgs.callPackage "${src}/nix/opencode.nix" {
         inherit node_modules;

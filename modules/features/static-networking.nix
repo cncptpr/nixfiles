@@ -44,6 +44,6 @@
             dhcpcd.enable = false;
           };
         };
-    
+
     };
 }

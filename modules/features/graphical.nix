@@ -4,6 +4,7 @@
     imports = with self.nixosModules; [
       niri
       zenBrowser
+      kitty
     ];
 
     environment.systemPackages = with pkgs; [

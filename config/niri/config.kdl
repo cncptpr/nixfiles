@@ -3,7 +3,7 @@ input {
         xkb {
             layout "de(nodeadkeys)"
             // layout "us"
-            options "caps:escape"
+            options "caps:escape,compose:ralt"
         }
 
         numlock
@@ -25,7 +25,7 @@ layout {
         proportion 0.66667
     }
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.33333; }
 
     focus-ring {
         width 4
@@ -53,11 +53,6 @@ animations {
     // off
 
     slowdown 0.5
-}
-
-window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
 }
 
 window-rule {

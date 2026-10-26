@@ -87,7 +87,7 @@
         '';
         shellAliases = lib.mkMerge [
           {
-
+            ping-test = "sping 1.1.1.1 google.com cncptpr.xyz h0t2 papercut.othr.de";
             gs = "git status";
             ga = "git add -A";
             gap = "git add -p";

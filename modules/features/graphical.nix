@@ -5,6 +5,7 @@
       niri
       zenBrowser
       kitty
+      photocraft
     ];
 
     environment.systemPackages = with pkgs; [

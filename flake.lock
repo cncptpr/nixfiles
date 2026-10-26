@@ -492,6 +492,26 @@
         "type": "github"
       }
     },
+    "photocraft": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793017329,
+        "narHash": "sha256-UkGOt83QXCbISpHk4sraL9sARdrGYq4iRG3Diz6HIlo=",
+        "owner": "nolight132",
+        "repo": "photocraft-flake",
+        "rev": "d443e8096ae88f66f4a8d5f72f831adfe34b1824",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nolight132",
+        "repo": "photocraft-flake",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -530,6 +550,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "opencode": "opencode",
         "perfect-smithing": "perfect-smithing",
+        "photocraft": "photocraft",
         "shogging": "shogging",
         "sping": "sping",
         "treefmt-nix": "treefmt-nix_2",

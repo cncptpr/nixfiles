@@ -66,6 +66,10 @@
       url = "github:LambdaBytes/sping";
       flake = false;
     };
+    photocraft = {
+      url = "github:nolight132/photocraft-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

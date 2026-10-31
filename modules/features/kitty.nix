@@ -1,12 +1,17 @@
 { self, ... }: {
   flake.wrappers.kitty = { wlib, ... }: {
     imports = [ wlib.wrapperModules.kitty ];
+    keybindings = {
+      "ctrl+enter" = "send_text all \\x1b[13;5u";
+      "shift+enter" = "send_text all \\x1b[13;2u";
+    };
     settings = {
       hide_window_decorations = true;
+      confirm_os_window_close = 0;
 
       font_features = "JetBrainsMono Nerd Font";
       allow_remote_control = "no";
-      window_margin_width = "1 10";
+      window_margin_width = "2 5";
 
       enable_audio_bell = "no";
       background_opacity = "0.9";

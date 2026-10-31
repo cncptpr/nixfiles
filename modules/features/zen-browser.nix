@@ -10,7 +10,7 @@
         private_browsing = true;
         default_area = "menupanel";
       };
-      zenBrowserConfed = inputs.zen-browser.packages.${system}.twilight-unwrapped.override {
+      zenBrowserConfed = inputs.zen-browser.packages.${system}.twilight.override {
         extraPolicies = {
           DisableAppUpdate = true;
           DisableTelemetry = true;
@@ -30,11 +30,11 @@
           };
         };
       };
-      zenBrowserPkg = pkgs.wrapFirefox zenBrowserConfed { };
+      # zenBrowserPkg = pkgs.wrapFirefox zenBrowserConfed { };
     in
     {
       environment.systemPackages = [
-        zenBrowserPkg
+        zenBrowserConfed
         # zenBrowserConfed
       ];
     };

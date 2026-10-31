@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      url = "github:ar175-lol/zen-browser-flake-fix/fix/policies";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode = {

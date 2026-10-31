@@ -30,6 +30,7 @@
       rclone
       pv
       nmap
+      witr
     ];
 
     environment.variables = {

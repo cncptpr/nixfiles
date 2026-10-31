@@ -46,6 +46,9 @@
       ninja
       stdenv.cc.cc.lib
       zlib
+      libcxx
+      gdb
+      gf
     ];
   };
 }

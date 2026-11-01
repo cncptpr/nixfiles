@@ -49,6 +49,7 @@
       libcxx
       gdb
       gf
+      tealdeer # tldr, but fast
     ];
   };
 }

@@ -70,6 +70,12 @@
       url = "github:nolight132/photocraft-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    signal-whisper = {
+      # url = "git+file:///home/cncptpr/Projects/signal-whisper";
+      # url = "github:haennes/signal-whisper";
+      url = "github:cncptpr/signal-whisper/allow-all-voice-messages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

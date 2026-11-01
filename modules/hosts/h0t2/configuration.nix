@@ -33,6 +33,7 @@ in
         # languagetool
         perfectSmithing
         shogging
+        signalWhisper
 
         # Utils
         inputs.ensure-dirs.nixosModules.default

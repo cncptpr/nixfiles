@@ -552,6 +552,7 @@
         "perfect-smithing": "perfect-smithing",
         "photocraft": "photocraft",
         "shogging": "shogging",
+        "signal-whisper": "signal-whisper",
         "sping": "sping",
         "treefmt-nix": "treefmt-nix_2",
         "wrapper-modules": "wrapper-modules",
@@ -576,6 +577,27 @@
       "original": {
         "owner": "cncptpr",
         "repo": "shogging",
+        "type": "github"
+      }
+    },
+    "signal-whisper": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793476462,
+        "narHash": "sha256-5q5sadUNl6UXgAYkRSw7EyzkGd7CqCEMM8pG7cR5ckw=",
+        "owner": "cncptpr",
+        "repo": "signal-whisper",
+        "rev": "8b96551746c123eaf8e2e4378de440267f4e8433",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cncptpr",
+        "ref": "allow-all-voice-messages",
+        "repo": "signal-whisper",
         "type": "github"
       }
     },

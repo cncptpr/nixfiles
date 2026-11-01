@@ -7,14 +7,14 @@
     };
     settings = {
       hide_window_decorations = true;
-      confirm_os_window_close = 0;
+      window_margin_width = "2 5";
+      background_opacity = "0.9";
 
       font_features = "JetBrainsMono Nerd Font";
-      allow_remote_control = "no";
-      window_margin_width = "2 5";
 
+      confirm_os_window_close = 0;
+      allow_remote_control = "no";
       enable_audio_bell = "no";
-      background_opacity = "0.9";
 
       # == Theme ==
       foreground = "#b2b2b2";

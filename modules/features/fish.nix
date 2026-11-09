@@ -92,7 +92,7 @@
             gs = "git status";
             ga = "git add -A";
             gap = "git add -p";
-            gai = "git add --intend-to-add";
+            gai = "git add -A --intent-to-add";
             gc = "git commit";
             gcm = "git commit -m";
             gp = "git push";

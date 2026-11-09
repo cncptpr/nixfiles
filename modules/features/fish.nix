@@ -84,6 +84,10 @@
           end
 
           devenv hook fish | source
+
+          function ns
+            nix shell (string replace -r "" "nixpkgs#" ''$argv)
+          end
         '';
         shellAliases = lib.mkMerge [
           {

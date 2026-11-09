@@ -66,6 +66,10 @@
       url = "github:LambdaBytes/sping";
       flake = false;
     };
+    dealve-tui = {
+      url = "github:kurama/dealve-tui";
+      flake = false;
+    };
     photocraft = {
       url = "github:nolight132/photocraft-flake";
       inputs.nixpkgs.follows = "nixpkgs";

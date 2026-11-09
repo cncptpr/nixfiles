@@ -69,6 +69,22 @@
         "type": "github"
       }
     },
+    "dealve-tui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778234870,
+        "narHash": "sha256-OF5gKILF7hcaNmaigI272kYUt83Y3ZOANThf275tREY=",
+        "owner": "kurama",
+        "repo": "dealve-tui",
+        "rev": "e9bc60e88dcd1d3445d821535b11b77a0103f507",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kurama",
+        "repo": "dealve-tui",
+        "type": "github"
+      }
+    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -539,6 +555,7 @@
       "inputs": {
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
+        "dealve-tui": "dealve-tui",
         "deploy-rs": "deploy-rs",
         "ensure-dirs": "ensure-dirs",
         "flake-parts": "flake-parts_2",

@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, ... }: {
   flake.nixosModules.graphical = { pkgs, ... }: {
 
     imports = with self.nixosModules; [
@@ -6,6 +6,7 @@
       zenBrowser
       kitty
       photocraft
+      helium
     ];
 
     environment.systemPackages = with pkgs; [
@@ -13,7 +14,6 @@
       wl-clipboard-x11
 
       signal-desktop
-      inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     services.displayManager.gdm.enable = true;

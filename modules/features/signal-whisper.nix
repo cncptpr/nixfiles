@@ -1,7 +1,6 @@
 { inputs, ... }: {
   flake.nixosModules.signalWhisper =
-    { config, pkgs, ... }:
-
+    { config, ... }:
     let
       cfg = config.services.signal-whisper;
     in
@@ -10,7 +9,7 @@
 
       age.secrets."signal-whisper-account.db" = {
         rekeyFile = ../../secrets/signal-whisper-account.db.age;
-        group = cfg.user;
+        group = cfg.group;
         owner = cfg.user;
       };
       age.secrets."signal-whisper-accounts.json" = {
@@ -21,11 +20,9 @@
 
       services.signal-whisper = {
         enable = true;
-        # model = "${inputs.signal-whisper.packages.${pkgs.stdenv.hostPlatform.system}.large-v3-q5_0}/large-v3-q5_0.bin";
         modelName = "large-v3-q5.0";
         language = "de";
-        # notifySelf = true;
-        # dataDir = "/mass/data/signal-whisper/";
+        transcribeOwnMessages = true;
         secrets = {
           accountsFile = config.age.secrets."signal-whisper-accounts.json".path;
           accountDbFile = config.age.secrets."signal-whisper-account.db".path;
@@ -33,12 +30,5 @@
           configFile = config.age.secrets."signal-whisper-config.json".path;
         };
       };
-
-      # ensureDirs.dirs = {
-      #   "${cfg.dataDir}" = {
-      #     user = cfg.user;
-      #     group = cfg.user;
-      #   };
-      # };
     };
 }

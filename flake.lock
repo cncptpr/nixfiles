@@ -604,16 +604,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1793476462,
-        "narHash": "sha256-5q5sadUNl6UXgAYkRSw7EyzkGd7CqCEMM8pG7cR5ckw=",
-        "owner": "cncptpr",
+        "lastModified": 1793624939,
+        "narHash": "sha256-Hk7x61BXOSGIInPZoWw5boLdQUl+oaNoU6hlKWs+6gQ=",
+        "owner": "haennes",
         "repo": "signal-whisper",
-        "rev": "8b96551746c123eaf8e2e4378de440267f4e8433",
+        "rev": "410f9f699d66a011afab7c11b8e1e0e266bfeb93",
         "type": "github"
       },
       "original": {
-        "owner": "cncptpr",
-        "ref": "allow-all-voice-messages",
+        "owner": "haennes",
         "repo": "signal-whisper",
         "type": "github"
       }

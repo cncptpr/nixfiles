@@ -87,6 +87,7 @@
         '';
         shellAliases = lib.mkMerge [
           {
+            h0top = "ssh h0t2 -t btop";
             ls = lib.getExe pkgs.eza;
             ping-test = "sping 1.1.1.1 google.com cncptpr.xyz h0t2 papercut.othr.de git.fsim-ev.de";
             gs = "git status";

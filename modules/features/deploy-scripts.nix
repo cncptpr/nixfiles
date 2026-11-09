@@ -16,6 +16,7 @@ in
           name: _:
           pkgs.writeShellScriptBin "deploy-${name}" ''
             set -euo pipefail
+            git add --intent-to-add -A
             deploy -sk --targets "/home/cncptpr/nixfiles#${name}" "$@" -- --log-format internal-json -v |& nom --json
           ''
         )

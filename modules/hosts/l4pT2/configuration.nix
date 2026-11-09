@@ -25,6 +25,17 @@
         opencode
       ];
 
+      services.udev.packages = [
+        (pkgs.writeTextFile {
+          name = "usbasp-udev-rules";
+          text = ''
+            SUBSYSTEM=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", MODE="0660", TAG+="uaccess"
+            SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="c7b4", MODE="0660", TAG+="uaccess"
+          '';
+          destination = "/etc/udev/rules.d/70-usbasp.rules";
+        })
+      ];
+
       boot.loader = {
         grub = {
           enable = true;

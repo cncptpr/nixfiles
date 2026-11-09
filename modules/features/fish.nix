@@ -17,6 +17,15 @@
     {
       environment.systemPackages = with pkgs; [ devenv ];
 
+      programs.zoxide = {
+        enable = true;
+        enableFishIntegration = true;
+        enableBashIntegration = true;
+        enableXonshIntegration = true;
+      };
+
+      programs.xonsh.enable = true;
+
       programs.fish = {
         enable = true;
         shellInit = ''

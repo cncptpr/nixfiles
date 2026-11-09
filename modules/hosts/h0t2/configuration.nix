@@ -30,7 +30,7 @@ in
         paperless
         postgres
         radicale
-        # languagetool
+        languagetool
         perfectSmithing
         shogging
         signalWhisper

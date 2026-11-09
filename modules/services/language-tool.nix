@@ -9,6 +9,7 @@
     {
       services.languagetool = {
         enable = true;
+        public = true;
         port = lib.mkDefault 7032;
         allowOrigin = ""; # To allow access from browser addons
 

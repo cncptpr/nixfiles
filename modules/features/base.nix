@@ -33,6 +33,11 @@
       witr
     ];
 
+    security.sudo.extraConfig = ''
+      Defaults pwfeedback
+      Defaults insults
+    '';
+
     environment.variables = {
       EDITOR = "hx";
       TERM = "xterm-256color";

@@ -17,18 +17,11 @@
       port = 1234;
     };
 
-    services.newt.blueprint.proxy-resources.shogging = {
-      auth.sso-enabled = true;
-      full-domain = "shogging.cncptpr.xyz";
+    custom.reverse-proxy.shogging = {
       name = "Shogging";
-      protocol = "http";
-      targets = [
-        {
-          hostname = "localhost";
-          method = "http";
-          port = config.services.shogging.port;
-        }
-      ];
+      port = config.services.shogging.port;
+      domain = "shogging.cncptpr.xyz";
+      authentication = true;
     };
 
   };

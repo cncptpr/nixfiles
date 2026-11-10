@@ -66,18 +66,11 @@
           group = cfg.group;
         };
 
-        services.newt.blueprint.proxy-resources.radicale = {
-          auth.sso-enabled = false;
-          full-domain = "radicale.cncptpr.xyz";
+        custom.reverse-proxy.radicale = {
           name = "Radicale";
-          protocol = "http";
-          targets = [
-            {
-              hostname = "localhost";
-              method = "http";
-              port = config.custom.radicale.port;
-            }
-          ];
+          port = config.custom.radicale.port;
+          domain = "radicale.cncptpr.xyz";
+          authentication = false;
         };
       };
 

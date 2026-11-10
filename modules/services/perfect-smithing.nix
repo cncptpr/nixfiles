@@ -7,18 +7,10 @@
       port = 3030;
     };
 
-    services.newt.blueprint.proxy-resources.perfect-smithing = {
-      auth.sso-enabled = false;
-      full-domain = "smithing.cncptpr.xyz";
+    custom.reverse-proxy.perfect-smithing = {
       name = "Perfect Smithing";
-      protocol = "http";
-      targets = [
-        {
-          hostname = "localhost";
-          method = "http";
-          port = config.services.perfect-smithing.port;
-        }
-      ];
+      port = config.services.perfect-smithing.port;
+      domain = "smithing.cncptpr.xyz";
     };
   };
 }

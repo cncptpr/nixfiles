@@ -40,7 +40,7 @@
             optimize = 1;
             pdfa_image_compression = "lossless";
           };
-          PAPERLESS_URL = "https://${config.services.newt.blueprint.proxy-resources.paperless.full-domain}";
+          PAPERLESS_URL = "https://${config.custom.reverse-proxy.paperless.domain}";
         };
       };
 
@@ -57,18 +57,10 @@
             group = cfg.group;
           });
 
-      services.newt.blueprint.proxy-resources.paperless = {
-        auth.sso-enabled = false;
-        full-domain = "paperless.cncptpr.xyz";
+      custom.reverse-proxy.paperless = {
         name = "Paperless";
-        protocol = "http";
-        targets = [
-          {
-            hostname = "localhost";
-            method = "http";
-            port = config.services.paperless.port;
-          }
-        ];
+        port = config.services.paperless.port;
+        domain = "paperless.cncptpr.xyz";
       };
     };
 }

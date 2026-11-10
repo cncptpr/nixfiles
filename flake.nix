@@ -66,6 +66,10 @@
       url = "github:LambdaBytes/sping";
       flake = false;
     };
+    nerdlog = {
+      url = "github:dimonomid/nerdlog/v1.13.0";
+      flake = false;
+    };
     dealve-tui = {
       url = "github:kurama/dealve-tui";
       flake = false;

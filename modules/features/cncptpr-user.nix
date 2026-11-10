@@ -7,6 +7,7 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "systemd-journalctl"
       ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [

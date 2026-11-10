@@ -370,6 +370,23 @@
         "type": "github"
       }
     },
+    "nerdlog": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791026112,
+        "narHash": "sha256-0SRmVopu08V2vY6IqfRXiLfmki4IcjsbM0dStKTDqds=",
+        "owner": "dimonomid",
+        "repo": "nerdlog",
+        "rev": "167db1b1b67935eeae270439729c3087c94b0088",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dimonomid",
+        "ref": "v1.13.0",
+        "repo": "nerdlog",
+        "type": "github"
+      }
+    },
     "nix-gleam": {
       "inputs": {
         "nixpkgs": [
@@ -562,6 +579,7 @@
         "helium": "helium",
         "import-tree": "import-tree",
         "leaf": "leaf",
+        "nerdlog": "nerdlog",
         "nixpkgs": "nixpkgs",
         "nixpkgs-opencode": "nixpkgs-opencode",
         "nixpkgs-stable": "nixpkgs-stable",

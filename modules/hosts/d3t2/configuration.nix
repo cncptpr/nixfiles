@@ -17,6 +17,7 @@
         graphical
         dev
         dealveTui
+        nerdlog
         age
         # nmProfiles
 

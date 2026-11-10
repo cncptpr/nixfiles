@@ -7,6 +7,8 @@
     ];
 
     environment.systemPackages = with pkgs; [
+      tealdeer # tldr, but fast
+
       # Git
       lazygit
       gh
@@ -49,7 +51,6 @@
       libcxx
       gdb
       gf
-      tealdeer # tldr, but fast
     ];
   };
 }

@@ -78,6 +78,8 @@
 
         agent-browser
         chromium
+
+        ddgr
       ];
 
       virtualisation.libvirtd.enable = true;

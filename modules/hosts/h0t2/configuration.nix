@@ -34,6 +34,7 @@ in
         perfectSmithing
         shogging
         signalWhisper
+        # memos
 
         # Utils
         inputs.ensure-dirs.nixosModules.default

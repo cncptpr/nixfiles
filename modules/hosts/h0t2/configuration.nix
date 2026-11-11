@@ -63,6 +63,7 @@ in
         bat
         gh
         lazygit
+        opencode
         nil
         nix-output-monitor
       ];

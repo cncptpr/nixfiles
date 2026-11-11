@@ -3,11 +3,12 @@
 
     imports = with self.nixosModules; [
       sping
-      leaf
+      # leaf
     ];
 
     environment.systemPackages = with pkgs; [
       tealdeer # tldr, but fast
+      opencode
 
       # Git
       lazygit

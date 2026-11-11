@@ -28,16 +28,6 @@
       url = "github:ar175-lol/zen-browser-flake-fix/fix/policies";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    opencode = {
-      url = "github:anomalyco/opencode/v2.0.32";
-      flake = false;
-    };
-    # Toolchain the opencode v2 nix package publishes its node_modules hashes
-    # for (see opencode/nix/hashes.json); avoid hash overrides by building it
-    # with the same pinned nixpkgs. Bump together with the v2 input above.
-    nixpkgs-opencode = {
-      url = "github:nixos/nixpkgs/9dd5558b06dbdacbf635a3dd36dce1b1a7ee3a89";
-    };
 
     perfect-smithing = {
       url = "github:cncptpr/perfect-smithing";

@@ -16,6 +16,8 @@
       ];
     };
 
+    nix.settings.trusted-users = [ "cncptpr" ];
+
     programs.nh = {
       enable = true;
       clean.enable = false;

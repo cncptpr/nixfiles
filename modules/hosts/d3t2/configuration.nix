@@ -27,7 +27,6 @@
 
         deployScripts
         nixd
-        opencode
       ];
 
       boot.loader = {

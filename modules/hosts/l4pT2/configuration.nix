@@ -23,7 +23,6 @@
         nmProfiles
         deployScripts
         nixd
-        opencode
       ];
 
       services.udev.packages = [

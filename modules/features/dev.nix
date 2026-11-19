@@ -9,6 +9,7 @@
     environment.systemPackages = with pkgs; [
       tealdeer # tldr, but fast
       opencode
+      fzf
 
       # Git
       lazygit
@@ -28,6 +29,7 @@
       rustc
       clippy
       bacon
+      rustfmt
 
       # Python
       python3

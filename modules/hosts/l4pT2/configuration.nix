@@ -36,6 +36,8 @@
         })
       ];
 
+      users.groups.dialout.members = ["cncptpr"];
+
       boot.loader = {
         grub = {
           enable = true;

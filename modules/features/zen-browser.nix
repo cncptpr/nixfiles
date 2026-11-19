@@ -19,6 +19,7 @@
               installation_mode = "blocked";
               blocked_install_message = "Addons managed by Nix";
             };
+            "markdown-here-webext@adam.pritchard" = defaultCfg;
             "{446900e4-71c2-419f-a6a7-df9c091e268b}" = defaultCfg // {
               default_area = "navbar";
             }; # bitwarden

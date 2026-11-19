@@ -1,7 +1,6 @@
 { self, inputs, ... }:
 let
   system = pkgs: pkgs.stdenv.hostPlatform.system;
-  get-stable-niri = pkgs: inputs.nixpkgs-stable.legacyPackages.${system pkgs}.niri;
   get-wrapped-niri = pkgs: self.packages.${system pkgs}.niri;
 in
 {
@@ -13,7 +12,7 @@ in
     }:
     {
       imports = [ wlib.wrapperModules.niri ];
-      package = get-stable-niri pkgs;
+      package = pkgs.niri;
       "config.kdl".content = builtins.readFile ../../config/niri/config.kdl;
     };
 
@@ -44,7 +43,7 @@ in
       config = {
         programs.niri = {
           enable = true;
-          package = if cfg.useExternalConfig then get-stable-niri pkgs else get-wrapped-niri pkgs;
+          package = if cfg.useExternalConfig then pkgs.niri else get-wrapped-niri pkgs;
         };
 
         environment.systemPackages =

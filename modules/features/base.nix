@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, ... }: {
   flake.nixosModules.base = { pkgs, ... }: {
     imports = with self.nixosModules; [
       experimentalFeatures
@@ -10,6 +10,7 @@
       git
       fish
       tmux
+      mm
     ];
 
     nixpkgs.config.allowUnfree = true;

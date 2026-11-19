@@ -1,8 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
-
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
@@ -72,6 +70,11 @@
       # url = "git+file:///home/cncptpr/Projects/signal-whisper";
       url = "github:haennes/signal-whisper";
       # url = "github:cncptpr/signal-whisper/allow-all-voice-messages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mm = {
+      # url = "git+file:///home/cncptpr/Projects/mm";
+      url = "git+https://codeberg.org/cncptpr/mm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

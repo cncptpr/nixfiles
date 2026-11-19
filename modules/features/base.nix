@@ -9,8 +9,10 @@
       # Programs & Config
       git
       fish
+      helix
       tmux
       mm
+      yazi
     ];
 
     nixpkgs.config.allowUnfree = true;
@@ -21,12 +23,10 @@
       dust
       fastfetch
       file
-      helix
       jq
       nil
       ripgrep
       tree
-      yazi
       libqalculate
       rclone
       pv

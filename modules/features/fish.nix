@@ -12,7 +12,7 @@
       herdr = lib.getExe pkgs.herdr;
       tmux = lib.getExe self.packages.${system}.tmux;
       jq = lib.getExe pkgs.jq;
-      yazi = lib.getExe pkgs.yazi;
+      yazi = lib.getExe self.packages.${system}.yazi;
     in
     {
       environment.systemPackages = with pkgs; [ devenv ];

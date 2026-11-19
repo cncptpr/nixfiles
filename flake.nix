@@ -6,6 +6,12 @@
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
+    nix-yazi-plugins = {
+      url = "github:cncptpr/nix-yazi-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-wrapper-modules.follows = "wrapper-modules";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";

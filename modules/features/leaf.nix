@@ -35,6 +35,8 @@ in
 
         src = inputs.leaf;
         cargoLock.lockFile = "${inputs.leaf}/Cargo.lock";
+        nativeBuildInputs = [ pkgs.pkg-config ];
+        buildInputs = [ pkgs.oniguruma ];
 
         meta = with pkgs.lib; {
           description = "Terminal Markdown previewer with a GUI-like experience";

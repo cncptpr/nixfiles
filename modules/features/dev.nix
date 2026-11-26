@@ -3,7 +3,7 @@
 
     imports = with self.nixosModules; [
       sping
-      # leaf
+      leaf
     ];
 
     environment.systemPackages = with pkgs; [

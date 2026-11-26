@@ -53,6 +53,8 @@ in
             vicinae
             noctalia
             wezterm
+            brightnessctl
+            playerctl
 
             ##### Nocatlia Plugins #####
             # Animated wallpaper
